@@ -21,25 +21,32 @@ namespace TradingCardsApp
         private void listBoxPlayers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxPlayers.SelectedItem is Player selectedPlayer)
-            {
-                try
-                {
-                    pictureBoxPlayer.Image = Image.FromFile(selectedPlayer.PhotoPath); // Ensure valid path
-                }
-                catch (FileNotFoundException ex)
-                {
-                    MessageBox.Show($"Image file not found: {selectedPlayer.PhotoPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+    {
+        try
+        {
+            // Combine the application's startup path with the relative image path
+            string imagePath = Path.Combine(Application.StartupPath, selectedPlayer.PhotoPath);
 
-                labelPlayerName.Text = selectedPlayer.Name;
-                labelPlayerTeam.Text = selectedPlayer.Team;
-                labelPlayerStats.Text = $"Points: {selectedPlayer.Stat1}, Assists: {selectedPlayer.Stat2}, Rebounds: {selectedPlayer.Stat3}, Steals: {selectedPlayer.Stat4}";
-                SetCardColor(selectedPlayer);
-            }
+            // Load the image into the PictureBox
+            pictureBoxPlayer.Load(imagePath); // Use PictureBox.Load method
+
+            // Optionally log the path for debugging
+            Console.WriteLine(imagePath);
+        }
+        catch (FileNotFoundException ex)
+        {
+            MessageBox.Show($"Image file not found: {selectedPlayer.PhotoPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        labelPlayerName.Text = selectedPlayer.Name;
+        labelPlayerTeam.Text = selectedPlayer.Team;
+        labelPlayerStats.Text = $"Points: {selectedPlayer.Stat1}, Assists: {selectedPlayer.Stat2}, Rebounds: {selectedPlayer.Stat3}, Steals: {selectedPlayer.Stat4}";
+        SetCardColor(selectedPlayer);
+    }
         }
 
         private void SetCardColor(Player player)
@@ -91,7 +98,5 @@ namespace TradingCardsApp
         {
 
         }
-
-
     }
 }

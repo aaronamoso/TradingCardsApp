@@ -16,7 +16,7 @@ namespace TradingCardsApp
     new Player { Name = "Austin Reaves", Team = "Lakers", PhotoPath = "images/reaves.jpg", Stat1 = 17, Stat2 = 5, Stat3 = 4, Stat4 = 1 },
 
     // Team Warriors
-    new Player { Name = "Stephen Curry", Team = "Warriors", PhotoPath = "images/curry.png", Stat1 = 30, Stat2 = 6, Stat3 = 5, Stat4 = 2 },
+    new Player { Name = "Stephen Curry", Team = "Warriors", PhotoPath = "C://Users//Aaron//Documents//c#//TradingCardsApp//images//lebron.png", Stat1 = 30, Stat2 = 6, Stat3 = 5, Stat4 = 2 },
     new Player { Name = "Klay Thompson", Team = "Warriors", PhotoPath = "images/klay.png", Stat1 = 21, Stat2 = 2, Stat3 = 4, Stat4 = 1 },
     new Player { Name = "Draymond Green", Team = "Warriors", PhotoPath = "images/draymond.jpg", Stat1 = 8, Stat2 = 7, Stat3 = 7, Stat4 = 1 },
 
@@ -26,6 +26,8 @@ namespace TradingCardsApp
     new Player { Name = "Brook Lopez", Team = "Bucks", PhotoPath = "images/lopez.jpg", Stat1 = 16, Stat2 = 2, Stat3 = 7, Stat4 = 3 },
     new Player { Name = "Jrue Holiday", Team = "Bucks", PhotoPath = "images/holiday.jpg", Stat1 = 19, Stat2 = 7, Stat3 = 5, Stat4 = 2 }
     };
+        
+
         public static void AddPlayer(Player player) => Players.Add(player);
         public static void RemovePlayer(Player player) => Players.Remove(player);
     }
